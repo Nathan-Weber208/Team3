@@ -1,3 +1,7 @@
+import {loadHeaderFooter} from './utils';
+
+loadHeaderFooter();
+
 const shopping_cart = document.querySelector('.cart')
 const cart_buttons = document.querySelectorAll('.addToCart')
 
