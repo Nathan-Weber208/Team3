@@ -21,31 +21,28 @@ export default class ProductDetails {
     console.log(this.product);
    return Object.values(cart).filter((product)=>product.Id == this.product.Id).length > 0;
   }
+ 
   addToCart() {
      //Check if there is any data for the cart in local storage
-     let cart = Array.from(getLocalStorage('so-cart'));
-     if (cart == null){
-      cart = [];
-      this.product.count = 1;
-      cart.push(this.product);
-        setLocalStorage('so-cart', cart);
-     }else if (!this.productInCart(cart)){
-      this.product.count = 1;
-      cart.push(this.product);
-      setLocalStorage('so-cart', cart);
-     }else {
-      for(let iProduct = 0; iProduct < cart.length ; iProduct++){
-        if(cart[iProduct].Id == this.product.Id){
-          cart[iProduct].count++;
-          setLocalStorage('so-cart', cart);  
-          break;
+        let cart = getLocalStorage('so-cart');
+        if (cart == null){
+          cart = [];
+          this.product.Count = 1;
+          cart.push(this.product);
+            setLocalStorage('so-cart', cart);
+        }else if (!this.productInCart(cart)){
+          this.product.Count = 1;
+          cart.push(this.product);
+          setLocalStorage('so-cart', cart);
+        }else {
+          for(let iProduct = 0; iProduct < cart.length ; iProduct++){
+            if(cart[iProduct].Id == this.product.Id){
+              cart[iProduct].Count++;
+              setLocalStorage('so-cart', cart);  
+              break;
+            }
+          }
         }
-      }
-    }
-    // then add the current product to the list
-    cartContents.push(this.product);
-    setLocalStorage('so-cart', cartContents);
-    alertMessage(`${this.product.NameWithoutBrand} added to cart!`)
   }
   renderProductDetails() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>

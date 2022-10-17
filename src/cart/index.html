@@ -14,8 +14,10 @@
           <h2 class="card__name"></h2>
         </a>
         <p class="cart-card__color"></p>
-        <p class="cart-card__quantity">qty: 1</p>
-        <p class="cart-card__price">$</p>
+        <div class="cart-card__alter-quantity"><p class="cart-card__quantity">qty: 1 </p>
+          <span><img class="add-button" src="../images/add.svg" alt="Add Button" width="20px"><br>
+          <img class="subtract-button" src="../images/subtract.svg" alt="Subtract Button" width="20px"></span></div>
+        <p class="cart-card__price"> $</p>
       </li>
     </template>
   </head>
@@ -27,7 +29,7 @@
         <ul class="product-list">
         </ul>
         <div class="cart-footer hide">
-          <p id="cart-total"></p>
+          <p class="cart-total"></p>
           <button id="checkoutbtn"><a href="../checkout/index.html">Check out</a></button>
         </div>
       </section>

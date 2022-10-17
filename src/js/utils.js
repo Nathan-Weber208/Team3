@@ -2,7 +2,7 @@ function convertToText(res) {
   if (res.ok) {
     return res.text();
   } else {
-    throw new Error("Bad Response");
+    throw new Error('Bad Response');
   }
 }
 
@@ -21,11 +21,11 @@ export function setLocalStorage(key, data) {
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
+  qs(selector).addEventListener('touchend', (event) => {
     event.preventDefault();
     callback();
   });
-  qs(selector).addEventListener("click", callback);
+  qs(selector).addEventListener('click', callback);
 }
 
 export function getParam(param) {
@@ -52,17 +52,17 @@ export function renderWithTemplate(template, parent, data, callback) {
 
 export async function loadTemplate(path) {
   const html = await fetch(path).then(convertToText);
-  const template = document.createElement("template");
+  const template = document.createElement('template');
   template.innerHTML = html;
   return template;
 }
 
 // load the header and footer
 export async function loadHeaderFooter() {
-  const header = await loadTemplate("../partials/header.html");
-  const footer = await loadTemplate("../partials/footer.html");
-  const headerElement = document.getElementById("main-header");
-  const footerElement = document.getElementById("main-footer");
+  const header = await loadTemplate('../partials/header.html');
+  const footer = await loadTemplate('../partials/footer.html');
+  const headerElement = document.getElementById('main-header');
+  const footerElement = document.getElementById('main-footer');
   renderWithTemplate(header, headerElement);
   renderWithTemplate(footer, footerElement);
 }

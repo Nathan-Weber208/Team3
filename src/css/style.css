@@ -172,7 +172,7 @@ button {
   color: var(--dark-grey);
 }
 
-.list-total {
+.cart-total {
   text-align: right;
 }
 .cart-footer {
@@ -180,6 +180,10 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.5em;
+}
+#cart-card-template {
+  display: flex;
+  flex-direction: column;
 }
 .cart-footer > a {
   /* display: block; */
@@ -263,6 +267,14 @@ button {
   grid-column: 3;
 }
 
+.cart-card__alter-quantity{
+  width: 100px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  padding: 5px;
+  margin-left: 10px;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

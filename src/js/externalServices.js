@@ -10,9 +10,6 @@ async function convertToJson(res) {
 
 export default class ExternalServices {
   constructor() {
-    //Using the API means we don't need to tie the dataSource to a specific category anymore. So we can remove this in the constructor.
-    // this.category = category;
-    // this.path = `../json/${this.category}.json`;
   }
   getData(category) {
     // instead we will pass the category we want in here when we need it.
@@ -33,5 +30,26 @@ export default class ExternalServices {
       body: JSON.stringify(payload),
     };
     return await fetch(baseURL + 'checkout/', options).then(convertToJson);
+  }
+  async loginRequest(user) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    }
+    const response = await fetch(baseURL + 'login', options).then(convertToJson);
+    return response.accessToken;
+  }
+  async getOrders(token) {
+    const options = {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+    const response = await fetch(baseURL + 'orders', options).then(convertToJson);
+    return response;
   }
 }
